@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import List
 
-WALL_HEIGT = 200
+WALL_HEIGT = 270
 
 
 @dataclass
