@@ -1,5 +1,5 @@
-from parfenovskaia.appartment import Door, Wall, Room, Appartment, Window
-
+from parfenovskaia.appartment import Door, Wall, Room, Appartment, Window, PAPER_LENGTH, WALL_HEIGT
+import math
 
 kitchen = Room(
     walls=[
@@ -45,8 +45,13 @@ hallway = Room(
 ])
 
 appartment = Appartment(
-    rooms=[kitchen, room1, room2, hallway])
+    # rooms=[kitchen, room1, room2, hallway]
+    rooms=[room1, room2, hallway]
+)
 
+
+number_of_lanes_in_roll = math.floor(PAPER_LENGTH / WALL_HEIGT)
+print('number of lanes in roll:', number_of_lanes_in_roll)
 
 def print_area(el, name):
     print('=' * 50)
@@ -56,7 +61,10 @@ def print_area(el, name):
     print('with_doors:', el.area(with_doors=True) / 100 / 100)
     print('with_windows:', el.area(with_windows=True) / 100 / 100)
     print('with_all:', el.area(with_doors=True, with_windows=True) / 100 / 100)
+    print('paper_lanes:', el.paper_lanes())
+    print('paper_rolls:', el.paper_lanes() / number_of_lanes_in_roll)
 
+    
 print_area(appartment, 'total')
 print_area(kitchen, 'kitchen')
 print_area(room1, 'room1')
