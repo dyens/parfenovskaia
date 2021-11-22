@@ -1,6 +1,9 @@
 from parfenovskaia.appartment import Door, Wall, Room, Appartment, Window, PAPER_LENGTH, WALL_HEIGT
 import math
 
+
+COLOR_CONS = 9 / 60.
+
 kitchen = Room(
     walls=[
         Wall(width=361),
@@ -44,9 +47,18 @@ hallway = Room(
         Wall(width=185.5 + 95 + 171.5, doors=[Door(95)]),
 ])
 
+wardrobe = Room(
+    walls=[
+        Wall(width=56 + 86 + 63, doors=[Door(86)]),
+        Wall(width=150),
+        Wall(width=205),
+        Wall(width=150),
+])
+
+
 appartment = Appartment(
     # rooms=[kitchen, room1, room2, hallway]
-    rooms=[room1, room2, hallway]
+    rooms=[wardrobe, room1, room2, hallway]
 )
 
 
@@ -63,6 +75,7 @@ def print_area(el, name):
     print('with_all:', el.area(with_doors=True, with_windows=True) / 100 / 100)
     print('paper_lanes:', el.paper_lanes())
     print('paper_rolls:', el.paper_lanes() / number_of_lanes_in_roll)
+    print('color_cons:', el.area() / 100 / 100 *  COLOR_CONS)
 
     
 print_area(appartment, 'total')
@@ -70,3 +83,4 @@ print_area(kitchen, 'kitchen')
 print_area(room1, 'room1')
 print_area(room2, 'room2')
 print_area(hallway, 'hallway')
+print_area(wardrobe, 'wardrobe')
